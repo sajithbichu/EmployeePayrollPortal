@@ -1,0 +1,40 @@
+.top-row{
+  padding: 1em 0;
+}
+
+.mat-form-field {
+  width: 80%;
+}
+
+
+.image-container{
+  width: 400px;
+  height: 400px;
+  background-color: #f7f7f7;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.image-container img{
+  width: 500px;
+}
+
+.containerMain {
+  display:flex;
+  padding: 0em 1em;
+}
+
+.container {
+  display:flex;
+  padding: 0em 10em;
+}
+.fixed {
+  width: 50%;
+}
+.flex-item {
+  flex-grow: 1;
+}

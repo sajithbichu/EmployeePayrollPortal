@@ -1,0 +1,80 @@
+<div class="page-header mt-1">
+  <div class="container">
+    <h1>Employee Details</h1>
+  </div>
+
+</div>
+
+<div class="container">
+
+ <div class="row end-xs mt-1">
+    <div class="col-xs-12">
+      <input type="text" class="search-input" placeholder="Search Employees"
+        [(ngModel)]="_filterString"
+        (keyup)="filterEmployees()">
+
+        <a routerLink="/Employee/add" mat-raised-button color="primary" class="ml-1">Add New Employee</a>
+    </div>
+</div>
+
+  <div class="mt-1 mat-elevation-z8">
+
+    <table mat-table matSort [dataSource]="_dataSource" class="">
+
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> First Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="dateOfBirth">
+        <th mat-header-cell *matHeaderCellDef> Date Of Birth </th>
+        <td mat-cell *matCellDef="let element"> {{element.dateOfBirth | date: 'dd-MM-yyyy'}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="mobile">
+        <th mat-header-cell *matHeaderCellDef> Mobile </th>
+        <td mat-cell *matCellDef="let element"> {{element.mobile}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="gender">
+        <th mat-header-cell *matHeaderCellDef> Gender </th>
+        <td mat-cell *matCellDef="let element"> {{element.gender.description}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let element">
+          <a [routerLink]="['/Employee', element.id]">
+            <mat-icon color="primary">edit</mat-icon>
+          </a>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <a [routerLink]="['', element.id]">
+            <mat-icon color="secondary">account_balance</mat-icon>
+          </a>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row  *matHeaderRowDef="_displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: _displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [length]="100"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        aria-label="Select page">
+    </mat-paginator>
+
+  </div>
+</div>
